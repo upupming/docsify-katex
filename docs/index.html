@@ -20,9 +20,9 @@
       subMaxLevel: 3,
 
       plugins: [
-        // function (hook) {
-        //   hook.beforeEach(content => window.docsifyKatex.render(content));
-        // }
+        function (hook) {
+          hook.beforeEach(content => window.docsifyKatex.render(content));
+        }
       ]
     }
   </script>

@@ -4,7 +4,9 @@
 
 This is a list of TeX functions supported by KaTeX. It is sorted into logical groups.
 
-There is a similar [Support Table](./support_table.md), sorted alphabetically, that lists both supported and un-supported functions.
+There is a similar [Support Table](./support-table.md), sorted alphabetically, that lists both supported and un-supported functions.
+
+<div class="katex-hopscotch">
 
 ## Accents
 
@@ -28,7 +30,7 @@ There is a similar [Support Table](./support_table.md), sorted alphabetically, t
 |||||
 |:---------------------|:---------------------|:---------------------|:-----
 |$\text{\'{a}}$ `\'{a}`|$\text{\~{a}}$ `\~{a}`|$\text{\.{a}}$ `\.{a}`|$\text{\H{a}}$ `\H{a}`
-|$\text{\`{a}}$ <code>\\`{a}</code>|$\text{\={a}}$ `\={a}`|$\text{\"{a}}$ `\"{a}`|$\text{\v{a}}$ `\v{a}`
+|$\text{\`{a}}$ <code>\\\`{a}</code>|$\text{\={a}}$ `\={a}`|$\text{\"{a}}$ `\"{a}`|$\text{\v{a}}$ `\v{a}`
 |$\text{\^{a}}$ `\^{a}`|$\text{\u{a}}$ `\u{a}`|$\text{\r{a}}$ `\r{a}`|
 
 See also [letters](#letters)
@@ -266,7 +268,7 @@ Direct Input: $∀ ∴ ∁ ∵ ∃ ∣ ∈ ∉ ∋ ⊂ ⊃ ∧ ∨ ↦ → ← �
 |                                      | `\renewcommand\macroname[numargs]{definition}`
 |                                      | `\providecommand\macroname[numargs]{definition}`
 
-Macros can also be defined in the KaTeX [rendering options](options.md).
+Macros can also be defined in the KaTeX rendering options.
 
 Macros accept up to nine arguments: #1, #2, etc.
 
@@ -607,7 +609,7 @@ where:
 
 F = (font size of surrounding HTML text)/(10 pt)
 
-G = 1.21 by default, because KaTeX font-size is normally 1.21 × the surrounding font size. This value [can be overridden](font.md#font-size-and-lengths) by the CSS of an HTML page.
+G = 1.21 by default, because KaTeX font-size is normally 1.21 × the surrounding font size. This value can be overridden by the CSS of an HTML page.
 
 </div>
 

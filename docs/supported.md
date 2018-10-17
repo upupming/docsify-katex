@@ -4,7 +4,7 @@
 
 This is a list of TeX functions supported by KaTeX. It is sorted into logical groups.
 
-There is a similar [Support Table](./support-table.md), sorted alphabetically, that lists both supported and un-supported functions.
+There is a similar [Support Table](./#/support-table), sorted alphabetically, that lists both supported and un-supported functions.
 
 <div class="katex-hopscotch">
 

@@ -47,6 +47,13 @@ window.$docsify = {
 npm run build
 ```
 
+## LaTex Quick reference
+
++ [Supported functions](https://upupming.site/docsify-katex/#/supported)
++ [Support table](https://upupming.site/docsify-katex/#/support-table)
++ [Detexify](http://detexify.kirelabs.org/classify.html)
++ [MathJax quick reference on Stack Exchange](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
+
 ## Inspired by
 
 1. [vscode-markdown](https://github.com/neilsustc/vscode-markdown)

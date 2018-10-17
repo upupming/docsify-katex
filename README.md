@@ -1,8 +1,12 @@
 # docsify-katex
 
+[![](https://data.jsdelivr.com/v1/package/npm/docsify-katex/badge)](https://www.jsdelivr.com/package/npm/docsify-katex)
+
 Add KaTex support for your docsify project. [Demo](https://upupming.site/docsify-katex)
 
 [KaTeX](https://github.com/Khan/KaTeX) is a faster alternative to MathJax. This plugin makes it easy to support in your markdown.
+
+![](./images/demo.png)
 
 ## Usage
 
@@ -39,7 +43,7 @@ window.$docsify = {
 </script>
 ```
 
-## Build
+## Build on your own
 
 ```bash
 npm run build

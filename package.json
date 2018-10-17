@@ -1,6 +1,6 @@
 {
   "name": "docsify-katex",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "KaTex support for docsify",
   "main": "dist/docsify-katex.js",
   "scripts": {
@@ -14,7 +14,11 @@
   "keywords": [
     "KaTex",
     "docsify",
-    "MathJax"
+    "MathJax",
+    "markdown-it",
+    "markdown-it-katex",
+    "math",
+    "LaTex"
   ],
   "author": "upupming",
   "license": "MIT",

@@ -1,7 +1,7 @@
 {
   "name": "docsify-katex",
   "version": "1.1.0",
-  "description": "KaTex support for docsify",
+  "description": "KaTeX support for docsify",
   "main": "dist/docsify-katex.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,13 +12,13 @@
     "url": "git+https://github.com/upupming/docsify-katex.git"
   },
   "keywords": [
-    "KaTex",
+    "KaTeX",
     "docsify",
     "MathJax",
     "markdown-it",
     "markdown-it-katex",
     "math",
-    "LaTex"
+    "LaTeX"
   ],
   "author": "upupming",
   "license": "MIT",

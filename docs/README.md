@@ -1,14 +1,14 @@
 # docsify-katex
 
 [![](https://data.jsdelivr.com/v1/package/npm/docsify-katex/badge)](https://www.jsdelivr.com/package/npm/docsify-katex)
+[![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/docsify-katex.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
+[![npm](https://img.shields.io/npm/v/docsify-katex.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
 
 Add KaTeX support for your docsify project. [Demo](https://upupming.site/docsify-katex)
 
-[KaTeX](https://github.com/Khan/KaTeX) is a faster alternative to MathJax. This plugin makes it easy to support in your markdown.
+[KaTeX](https://github.com/Khan/KaTeX) is a faster alternative to MathJax. This plugin makes it easy to support in your docsify project.
 
 ## Usage
-
-**Step 1:**
 
 Add `docsify-katex` CDN to your `index.html`:
 
@@ -18,27 +18,6 @@ Add `docsify-katex` CDN to your `index.html`:
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 <!-- Put them above docsify.min.js -->
 <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script>
-```
-
-**Step 2:**
-
-Add a plugin to your `index.html` to render page content using `docsify-katex`:
-
-```html
-<script>
-window.$docsify = {
-  name: 'docsify-katex',
-  repo: 'https://github.com/upupming/docsify-katex',
-  
-  // ...
-
-  plugins: [
-    function (hook) {
-      hook.beforeEach(content => window.docsifyKatex.render(content));
-    }
-  ]
-}
-</script>
 ```
 
 ## Build on your own

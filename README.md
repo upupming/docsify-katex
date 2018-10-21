@@ -1,6 +1,8 @@
 # docsify-katex
 
 [![](https://data.jsdelivr.com/v1/package/npm/docsify-katex/badge)](https://www.jsdelivr.com/package/npm/docsify-katex)
+[![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/docsify-katex.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
+[![npm](https://img.shields.io/npm/v/docsify-katex.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
 
 Add KaTeX support for your docsify project. [Demo](https://upupming.site/docsify-katex)
 

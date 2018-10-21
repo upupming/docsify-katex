@@ -4,7 +4,7 @@
 [![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/docsify-katex.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
 [![npm](https://img.shields.io/npm/v/docsify-katex.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
 
-Add KaTeX support for your docsify project. [Demo](https://upupming.site/docsify-katex)
+Add KaTeX support for your docsify project. [Demo](https://upupming.site/docsify-katex/docs)
 
 [KaTeX](https://github.com/Khan/KaTeX) is a faster alternative to MathJax. This plugin makes it easy to support in your docsify project.
 
@@ -28,8 +28,8 @@ npm run build
 
 ## LaTeX Quick reference
 
-+ [Supported functions](https://upupming.site/docsify-katex/#/supported)
-+ [Support table](https://upupming.site/docsify-katex/#/support-table)
++ [Supported functions](https://upupming.site/docsify-katex/docs/#/supported)
++ [Support table](https://upupming.site/docsify-katex/docs/#/support-table)
 + [Detexify](http://detexify.kirelabs.org/classify.html)
 + [MathJax quick reference on Stack Exchange](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
 

@@ -162,19 +162,21 @@ function escapeHtml(unsafe) {
 }
 
 module.exports = function math_plugin(md, options) {
-    // Default options
+    var preOpen = "<!-- begin preserve-katex --><pre class='preserve-katex'>";
+    var preClose = "</pre><!-- end preserve-katex -->";
 
+    // Default options
     options = options || {};
 
     // set KaTeX as the renderer for markdown-it-simplemath
     var katexInline = function(latex){
         options.displayMode = false;
         try{
-            return katex.renderToString(latex, options);
+            return preOpen + katex.renderToString(latex, options) + preClose;
         }
         catch(error){
             if(options.throwOnError){ console.log(error); }
-            return `<span class='katex-error' title='${escapeHtml(error.toString())}'>${escapeHtml(latex)}</span>`;
+            return preOpen + `<span class='katex-error' title='${escapeHtml(error.toString())}'>${escapeHtml(latex)}</span>` + preClose;
         }
     };
 
@@ -185,11 +187,12 @@ module.exports = function math_plugin(md, options) {
     var katexBlock = function(latex){
         options.displayMode = true;
         try{
-            return "<p class='katex-block'>" + katex.renderToString(latex, options) + "</p>";
+            return preOpen + "<p class='katex-block'>" + katex.renderToString(latex, options) + "</p>" + preClose;
         }
+        // KaTeX render error occurred
         catch(error){
             if(options.throwOnError){ console.log(error); }
-            return `<p class='katex-block katex-error' title='${escapeHtml(error.toString())}'>${escapeHtml(latex)}</p>`;
+            return preOpen + `<p class='katex-block katex-error' title='${escapeHtml(error.toString())}'>${escapeHtml(latex)}</p>` + preClose;
         }
     }
 
@@ -203,4 +206,4 @@ module.exports = function math_plugin(md, options) {
     });
     md.renderer.rules.math_inline = inlineRenderer;
     md.renderer.rules.math_block = blockRenderer;
-};
+};  

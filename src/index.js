@@ -1,17 +1,23 @@
 import markdownit from 'markdown-it';
 import markdownitKatex from './markdown-it-katex';
+import markdownPreserver from './preserver';
 
-window.docsifyKatex = markdownit({html: true})
-  .use(markdownitKatex, { "throwOnError": false });
+let md = markdownit({html: true});
+
+window.docsifyKatex = md.use(markdownitKatex, { "throwOnError": false })
+  .use(markdownPreserver);
 
 (function () {
   function install(hook) {
     hook.beforeEach(content => {
-      return `<pre>${window.docsifyKatex.render(content)}</pre>`;
+      let mathRendered = `${window.docsifyKatex.render(content)}`;
+      return mathRendered;
     }); 
     hook.afterEach(function(html, next) {
-      next(html.slice(5, -6))
-    })
+      let preOpen = /<!-- begin preserve-katex --><pre class='preserve-katex'>/g;
+      let preClose = /<\/pre><!-- end\ preserve-katex\ -->/g;
+      next(html.replace(preOpen, '').replace(preClose, ''));
+    });
   }
 
   $docsify.plugins = [].concat(install, $docsify.plugins);

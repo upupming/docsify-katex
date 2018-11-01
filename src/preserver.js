@@ -2,6 +2,7 @@ module.exports = function math_plugin(md, options) {
     // Default options
     options = options || {};
 
+    // Give control of headings to marked for anchor and sidebar
     md.renderer.rules.heading_open = function(tokens, idx) {
         return '\n' + tokens[idx].markup + ' ';
     }
@@ -15,6 +16,7 @@ module.exports = function math_plugin(md, options) {
         return '\n';
     }
 
+    // Give control of code block to marked for mermaid, etc.
     md.renderer.rules.fence = function(tokens, idx) {
         return "\n```" + tokens[idx].info + '\n' + tokens[idx].content + "```\n";
     }

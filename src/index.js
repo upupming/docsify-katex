@@ -15,10 +15,17 @@ window.docsifyKatex = md.use(markdownitKatex, { "throwOnError": false })
     }); 
     hook.afterEach(function(html, next) {
       let preOpen = /<!-- begin preserve-katex --><pre class='preserve-katex'>/g;
-      let preClose = /<\/pre><!-- end\ preserve-katex\ -->/g;
-      next(html.replace(preOpen, '').replace(preClose, ''));
+      let preClose = /<\/pre><!-- end preserve-katex -->/g;
+      let mathRecovered = html.replace(preOpen, '').replace(preClose, '');
+      next(mathRecovered);
     });
   }
 
   $docsify.plugins = [].concat(install, $docsify.plugins);
+
+  // em, strong & codespan will be rendered by markdown-it instead of marked
+  $docsify.markdown.renderer.em = text => text;
+  $docsify.markdown.renderer.strong = text => text;
+  $docsify.markdown.renderer.codespan = text => text;
+  
 }());

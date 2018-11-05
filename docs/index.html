@@ -10,7 +10,15 @@
 </head>
 <body>
   <div id="app"></div>
+  <script src="//cdn.jsdelivr.net/npm/mermaid@8.0.0-rc.8/dist/mermaid.min.js"></script>
   <script>
+    function makeid(len) {
+      var text = new Array(len);
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+      for (var i = 0; i < len; i++) text[i] = possible.charAt(Math.floor(Math.random() * possible.length));
+      return text.join("");
+    }
+    mermaid.initialize({ startOnLoad: false });
     window.$docsify = {
       name: 'docsify-katex',
       repo: 'https://github.com/upupming/docsify-katex',
@@ -23,8 +31,9 @@
         renderer: {
           code: function(code, lang) {
             if (lang === "mermaid") {
+              let id = makeid(10);
               return (
-                '<div class="mermaid">' + mermaid.render(lang, code) + "</div>"
+                '<div class="mermaid">' + mermaid.render(id, code) + "</div>"
               );
             }
             return this.origin.code.apply(this, arguments);
@@ -34,7 +43,6 @@
     }
   </script>
   <script src="../dist/docsify-katex.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/mermaid@8.0.0-rc.8/dist/mermaid.min.js"></script>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/plugins/search.min.js"></script>

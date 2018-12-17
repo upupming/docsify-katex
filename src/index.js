@@ -24,6 +24,7 @@ window.docsifyKatex = md.use(markdownitKatex, { "throwOnError": false })
   $docsify.plugins = [].concat(install, $docsify.plugins);
 
   // em, strong & codespan will be rendered by markdown-it instead of marked
+  $docsify.markdown = $docsify.markdown || {renderer: {}};
   $docsify.markdown.renderer.em = text => text;
   $docsify.markdown.renderer.strong = text => text;
   $docsify.markdown.renderer.codespan = text => text;

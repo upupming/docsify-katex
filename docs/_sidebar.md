@@ -2,3 +2,4 @@
 + [Supported functions](supported.md)
 + [Support table](support-table.md)
 + [mermaid](mermaid.md)
++ [Markdown in LaTeX](md-in-latex.md)

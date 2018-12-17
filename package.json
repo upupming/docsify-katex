@@ -29,7 +29,7 @@
   "homepage": "https://github.com/upupming/docsify-katex#readme",
   "dependencies": {
     "@neilsustc/markdown-it-katex": "^0.2.0",
-    "katex": "^0.10.0-rc.1",
+    "katex": "^0.10.0",
     "markdown-it": "^8.4.2"
   }
 }

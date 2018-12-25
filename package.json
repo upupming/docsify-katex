@@ -31,5 +31,9 @@
     "@neilsustc/markdown-it-katex": "^0.2.0",
     "katex": "^0.10.0",
     "markdown-it": "^8.4.2"
+  },
+  "devDependencies": {
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
   }
 }

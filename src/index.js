@@ -3,9 +3,13 @@ import markdownitKatex from './markdown-it-katex';
 import markdownPreserver from './preserver';
 import logger from './logger';
 
-let md = markdownit({html: true});
+let md = markdownit({
+  html: true
+});
 
-window.docsifyKatex = md.use(markdownitKatex, { "throwOnError": false })
+window.docsifyKatex = md.use(markdownitKatex, {
+    "throwOnError": false
+  })
   .use(markdownPreserver);
 
 (function () {
@@ -14,8 +18,8 @@ window.docsifyKatex = md.use(markdownitKatex, { "throwOnError": false })
       let mathRendered = `${window.docsifyKatex.render(content)}`;
       logger(mathRendered);
       return mathRendered;
-    }); 
-    hook.afterEach(function(html, next) {
+    });
+    hook.afterEach(function (html, next) {
       logger(html);
       let preOpen = /<!-- begin preserve-katex --><pre class='preserve-katex'>/g;
       let preClose = /<\/pre><!-- end preserve-katex -->/g;
@@ -28,9 +32,11 @@ window.docsifyKatex = md.use(markdownitKatex, { "throwOnError": false })
   $docsify.plugins = [].concat(install, $docsify.plugins);
 
   // em, strong & codespan will be rendered by markdown-it instead of marked
-  $docsify.markdown = $docsify.markdown || {renderer: {}};
+  $docsify.markdown = $docsify.markdown || {
+    renderer: {}
+  };
   $docsify.markdown.renderer.em = text => text;
   $docsify.markdown.renderer.strong = text => text;
   $docsify.markdown.renderer.codespan = text => text;
-  
+
 }());

@@ -1,7 +1,7 @@
 const debug = false;
 
 const logger = (msg) => {
-  if(debug) {
+  if (debug) {
     console.log(msg);
   }
 };

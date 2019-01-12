@@ -527,7 +527,7 @@ In cases where KaTeX fonts do not have a bold glyph, `\pmb` can simulate one. Fo
 
 **Style**
 
-||
+| |
 |:-------------------------------------------------------|
 |$\displaystyle\sum_{i=1}^n$ `\displaystyle\sum_{i=1}^n`
 |$\textstyle\sum_{i=1}^n$ `\textstyle\sum_{i=1}^n`

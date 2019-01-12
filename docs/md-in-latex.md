@@ -35,3 +35,51 @@ $$
 E = __mc^2__
 \tag{4}
 $$
+
+## `\\` support
+
+$$
+a = b \\
+c = d
+$$
+
+So this: $
+\def\arraystretch{1.5}
+   \begin{array}{c:c:c}
+   a & b & c \\ \hline
+   d & e & f \\
+   \hdashline
+   g & h & i
+\end{array}
+$
+
+## HTML
+
+This URL: $
+\href{https://katex.org/}{\KaTeX}
+$
+
+## Table
+
+| |
+|:-------------------------------------------------------|
+|$\displaystyle\sum_{i=1}^n$ `\displaystyle\sum_{i=1}^n`
+|$\textstyle\sum_{i=1}^n$ `\textstyle\sum_{i=1}^n`
+|$\scriptstyle x$ `\scriptstyle x` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(The size of a first sub/superscript)
+|$\scriptscriptstyle x$ `\scriptscriptstyle x` (The size of subsequent sub/superscripts)
+|$\lim\limits_x$ `\lim\limits_x`
+|$\lim\nolimits_x$ `\lim\nolimits_x`
+|$\verb!x^2!$ `\verb!x^2!`
+
+## Comments and begin with KaTeX
+
+
+<!--
+bla
+bla
+bla
+-->
+
+$$
+a = b
+$$

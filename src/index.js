@@ -1,42 +1,58 @@
-import markdownit from 'markdown-it';
-import markdownitKatex from './markdown-it-katex';
-import markdownPreserver from './preserver';
-import logger from './logger';
+import katex from 'katex';
 
-let md = markdownit({
-  html: true
-});
+let options = {
+  throwOnError: false,
+  displayMode: false
+};
+let blockOptions = {
+  throwOnError: false,
+  displayMode: true
+}
 
-window.docsifyKatex = md.use(markdownitKatex, {
-    "throwOnError": false
-  })
-  .use(markdownPreserver);
+const preMathInlineOpen = "<!-- begin-inline-katex";
+const preMathInlineClose = "end-inline-katex-->";
+const preMathInlineRegex = /<!-- begin-inline-katex([\s\S]*?)end-inline-katex-->/g;
+
+
+const preMathBlockOpen = "<!-- begin-block-katex";
+const preMathBlockClose = "end-block-katex-->";
+const preMathBlockRegex = /<!-- begin-block-katex([\s\S]*?)end-block-katex-->/g;
 
 (function () {
   function install(hook) {
     hook.beforeEach(content => {
-      let mathRendered = `${window.docsifyKatex.render(content)}`;
-      logger(mathRendered);
-      return mathRendered;
+      let mathPreserved = content
+        .replace(/(?<![\\`])(\$\$)([\s\S]*?)(?<![\\`])(\$\$)(?!`)/g, function (a, b, code) {
+          return preMathBlockOpen + code + preMathBlockClose;
+        })
+        .replace(/(?<![\\])(\$)([\s\S]*?)(?<![\\])(\$)/g, function (a, b, code) {
+          return preMathInlineOpen + code + preMathInlineClose;
+        })
+        .replace(/(?<![\\`])(\$)([\s\S]*?)(?<![\\`])(\$)(?!`)/g, function (a, b, code) {
+          return preMathInlineOpen + code + preMathInlineClose;
+        });
+      return mathPreserved;
     });
     hook.afterEach(function (html, next) {
-      logger(html);
-      let preOpen = /<!-- begin preserve-katex --><pre class='preserve-katex'>/g;
-      let preClose = /<\/pre><!-- end preserve-katex -->/g;
-      let mathRecovered = html.replace(preOpen, '').replace(preClose, '');
-      logger(mathRecovered);
-      next(mathRecovered);
+      let mathRendered = html
+        .replace(
+          preMathInlineRegex,
+          function (m, code) {
+            let rendered = katex.renderToString(code, options);
+            return rendered;
+          }
+        );
+      mathRendered = mathRendered
+        .replace(
+          preMathBlockRegex,
+          function (m, code) {
+            let rendered = katex.renderToString(code, blockOptions);
+            return rendered;
+          }
+        );
+      next(mathRendered);
     });
   }
 
   $docsify.plugins = [].concat(install, $docsify.plugins);
-
-  // em, strong & codespan will be rendered by markdown-it instead of marked
-  $docsify.markdown = $docsify.markdown || {
-    renderer: {}
-  };
-  $docsify.markdown.renderer.em = text => text;
-  $docsify.markdown.renderer.strong = text => text;
-  $docsify.markdown.renderer.codespan = text => text;
-
 }());

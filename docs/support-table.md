@@ -32,7 +32,7 @@ If you know the shape of a character, but not its name, [Detexify](http://detexi
 |\\;|$a\;\;{b}$|a`\;\;{b}`|
 |_|$x_i$|`x_i`|
 |\\_|$\_$||
-|\\\`|$\text{\`{a}}$|<code>\text{\\'{a}}</code>|
+|\\<code>`</code>|$\text{\`{a}}$|<code>\text{\\'{a}}</code>|
 |&#060;|$<$||
 |\\=|$\text{\={a}}$|<code>\text{\\={a}}</code>|
 | >|$>$||

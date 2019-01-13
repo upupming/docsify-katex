@@ -50,7 +50,7 @@ See also [letters](#letters)
 
 **Delimiter Sizing**
 
-$\left(\LARGE{AB}\right)$ `\left(\LARGE{AB}\right)`
+$\left(\LARGE{AB}\right)$ `\left(\LARGE{AB}\right)` 
 
 $( \big( \Big( \bigg( \Bigg($ `( \big( \Big( \bigg( \Bigg(`
 

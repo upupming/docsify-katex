@@ -73,7 +73,6 @@ $
 
 ## Comments and begin with KaTeX
 
-
 <!--
 bla
 bla
@@ -83,3 +82,16 @@ bla
 $$
 a = b
 $$
+
+## Special cases
+
+The second argument of `\raisebox` can contain math if it is nested within `$…$` delimiters, as in `\raisebox{0.25em}{$\frac a b$}`
+
+$\left(\LARGE{AB}\right)$ `\left(\LARGE{AB}\right)`
+
+$`$ <code>`</code>
+
+||||
+|-|-|-|
+|\\_|$\_$||
+|\\\`|$\text{\`{a}}$|<code>\text{\\'{a}}</code>|

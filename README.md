@@ -18,7 +18,10 @@ Add `docsify-katex` CDN to your `index.html`:
 <!-- CDN files for docsify-katex -->
 <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
 <!-- or <script src="//cdn.jsdelivr.net/gh/upupming/docsify-katex/dist/docsify-katex.js"></script> -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
+/>
 <!-- Put them above docsify.min.js -->
 <script src="//cdn.jsdelivr.net/npm/docsify@latest/lib/docsify.min.js"></script>
 ```
@@ -31,10 +34,10 @@ npm run build
 
 ## LaTeX Quick reference
 
-+ [Supported functions](https://upupming.site/docsify-katex/docs/#/supported)
-+ [Support table](https://upupming.site/docsify-katex/docs/#/support-table)
-+ [Detexify](http://detexify.kirelabs.org/classify.html)
-+ [MathJax quick reference on Stack Exchange](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
+- [Supported functions](https://upupming.site/docsify-katex/docs/#/supported)
+- [Support table](https://upupming.site/docsify-katex/docs/#/support-table)
+- [Detexify](http://detexify.kirelabs.org/classify.html)
+- [MathJax quick reference on Stack Exchange](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
 
 ## Inspired by
 
@@ -44,3 +47,15 @@ npm run build
 ## Credits
 
 1. [KaTeX](https://github.com/Khan/KaTeX)
+
+## Known issues
+
+Make KaTeX work properly with docsify is a hard work, this repo is just a workaround. The main difficulty is that we cannot know context of the whole markdown file, so matching <code>`</code>s and <code>\$</code> s are not possible. Now we have such known issues:
+
+1. Change <code>\\`</code> to:
+
+   ```txt
+   <code>`</code>
+   ```
+
+    By doing this, your <code>`</code> will not be considered as a start or end of code block.

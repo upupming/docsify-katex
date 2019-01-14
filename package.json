@@ -1,6 +1,6 @@
 {
   "name": "docsify-katex",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "KaTeX support for docsify",
   "main": "dist/docsify-katex.js",
   "scripts": {

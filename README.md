@@ -31,7 +31,7 @@ Note:
 
 If you have an awesome project using `docsify-katex` and want to share it with others, please leave it at [this issue](https://github.com/upupming/docsify-katex/issues/7). I will add it here as soon as possible.
 
-## LaTeX Quick reference
+## LaTeX quick reference
 
 - [Supported functions](https://upupming.site/docsify-katex/docs/#/supported)
 - [Support table](https://upupming.site/docsify-katex/docs/#/support-table)

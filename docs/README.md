@@ -13,13 +13,13 @@ Add `docsify-katex` CDN to your `index.html`:
 ```html
 <!-- CDN files for docsify-katex -->
 <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
-<!-- or <script src="//cdn.jsdelivr.net/gh/upupming/docsify-katex/dist/docsify-katex.js"></script> -->
+<!-- or <script src="//cdn.jsdelivr.net/gh/upupming/docsify-katex@latest/dist/docsify-katex.js"></script> -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
 ```
 
 Note:
 
-1. `gh/upupming/docsify-katex/dist/docsify-katex.js` will always fetch the latest version of `docsify-katex` on GitHub, you can use it when you want to try the latest dev features.
+1. `gh/upupming/docsify-katex@latest/dist/docsify-katex.js` will always fetch the latest version of `docsify-katex` on GitHub, you can use it when you want to try the latest dev features.
 2. You don't need `katex.min.js`, because it is already included in `docsify-katex.js`.
 
 ## Demo projects

@@ -2,6 +2,8 @@
 
 <!-- copied from https://raw.githubusercontent.com/Khan/KaTeX/master/docs/supported.md -->
 
+See also: https://katex.org/docs/supported.html.
+
 This is a list of TeX functions supported by KaTeX. It is sorted into logical groups.
 
 There is a similar [Support Table](./#/support-table), sorted alphabetically, that lists both supported and un-supported functions.
@@ -50,7 +52,7 @@ See also [letters](#letters)
 
 **Delimiter Sizing**
 
-$\left(\LARGE{AB}\right)$ `\left(\LARGE{AB}\right)` 
+$\left(\LARGE{AB}\right)$ `\left(\LARGE{AB}\right)`
 
 $( \big( \Big( \bigg( \Bigg($ `( \big( \Big( \bigg( \Bigg(`
 
@@ -99,7 +101,7 @@ The `{array}` environment does not yet support `\cline` or `\multicolumn`.
 
 **Greek Letters**
 
-Direct Input: $Α Β Γ Δ Ε Ζ Η Θ Ι \allowbreak Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω$  
+Direct Input: $Α Β Γ Δ Ε Ζ Η Θ Ι \allowbreak Κ Λ Μ Ν Ξ Ο Π Ρ Σ Τ Υ Φ Χ Ψ Ω$
 $\allowbreak α β γ δ ϵ ζ η θ ι κ λ μ ν ξ o π \allowbreak ρ σ τ υ ϕ χ ψ ω ε ϑ ϖ ϱ ς φ$
 
 |||||

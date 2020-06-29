@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/upupming/docsify-katex#readme",
   "dependencies": {
-    "katex": "^0.10.0"
+    "katex": "^0.11.1"
   },
   "devDependencies": {
     "webpack": "^4.28.2",

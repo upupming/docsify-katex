@@ -1,3 +1,4 @@
+import 'katex/contrib/mhchem/mhchem';
 import katex from 'katex';
 
 let options = {
@@ -29,6 +30,9 @@ const preMathBlockOpen = '<!-- begin-block-katex';
 const preMathBlockClose = 'end-block-katex-->';
 const preMathBlockRegex = /<!-- begin-block-katex([\s\S]*?)end-block-katex-->/g;
 
+const blockDollar = '!!blockDollar!!';
+const blockDollarRegx = /!!blockDollar!!/g;
+
 (function () {
   function install(hook) {
     hook.beforeEach(content => {
@@ -57,7 +61,8 @@ const preMathBlockRegex = /<!-- begin-block-katex([\s\S]*?)end-block-katex-->/g;
       mathPreserved = mathPreserved
         // Block
         .replace(/(\$\$)([\s\S]*?)(\$\$)/g, function (a, b, c) {
-          return preMathBlockOpen + c + preMathBlockClose;
+          let x = c.replace(/\$/g, blockDollar)
+          return preMathBlockOpen + x + preMathBlockClose;
         })
         // Inline, no \$
         .replace(/(\$)([\s\S]*?)(\$)/g, function (a, b, c) {
@@ -76,6 +81,7 @@ const preMathBlockRegex = /<!-- begin-block-katex([\s\S]*?)end-block-katex-->/g;
           }
         );
       mathRendered = mathRendered
+        .replace(blockDollarRegx, '$')
         .replace(
           preMathBlockRegex,
           function (m, code) {

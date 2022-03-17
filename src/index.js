@@ -31,18 +31,18 @@ const preMathBlockClose = 'end-block-katex-->';
 const preMathBlockRegex = /<!-- begin-block-katex([\s\S]*?)end-block-katex-->/g;
 
 const blockDollar = '!!blockDollar!!';
-const blockDollarRegx = /!!blockDollar!!/g;
+const blockDollarRegex = /!!blockDollar!!/g;
 
 (function () {
   function install(hook) {
     hook.beforeEach(content => {
       let mathPreserved = content
         // Escape all <code>`</code>
-        .replace(/<code>(.*)<\/code>/g, function(a, b) {
+        .replace(/<code>(.*)<\/code>/g, function (a, b) {
           return `<code>${b.replace(/`/g, magicBacktickInCodeTag)}</code>`;
         })
         // Escape all $`$
-        .replace(/\$`\$/g, magicBacktickInDollars)  
+        .replace(/\$`\$/g, magicBacktickInDollars)
         // Escape all \`{
         .replace(/\\`\{/g, magicEscapedBacktick)
         // Escape all \$
@@ -81,7 +81,7 @@ const blockDollarRegx = /!!blockDollar!!/g;
           }
         );
       mathRendered = mathRendered
-        .replace(blockDollarRegx, '$')
+        .replace(blockDollarRegex, '$')
         .replace(
           preMathBlockRegex,
           function (m, code) {

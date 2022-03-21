@@ -48,7 +48,7 @@ const blockDollarRegex = /!!blockDollar!!/g;
         // Escape all \$
         .replace(/\\\$/g, magicEscapedDollar)
         // Escape all & in `...`
-        .replace(/`[^`]*`/g, function (a) {
+        .replace(/(`{1,})([\s\S]*?)\1/g, function (a) {
           return a.replace(/\$/g, magicDollarInBacktick);
         })
         // Recover all <code>`</code>
@@ -81,10 +81,11 @@ const blockDollarRegex = /!!blockDollar!!/g;
           }
         );
       mathRendered = mathRendered
-        .replace(blockDollarRegex, '$')
         .replace(
           preMathBlockRegex,
           function (m, code) {
+            // Recover all $ in $$...$$
+            code = code.replace(blockDollarRegex, '$')
             let rendered = katex.renderToString(code, blockOptions);
             return rendered;
           }

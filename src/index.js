@@ -14,7 +14,7 @@
       name: "math",
       level: "inline",
       start(src) {
-        let index = src.match(/\$/)?.index;
+        let index = src.match(/\$/).index;
         return index;
       },
       tokenizer(src, tokens) {
@@ -39,23 +39,15 @@
       },
       renderer(token) {
         if (token.mathLevel === "block") {
-          return (
-            '<div class="math">' +
-            katex.renderToString(token.text, {
-              throwOnError: false,
-              displayMode: true,
-            }) +
-            "</div>"
-          );
+          return katex.renderToString(token.text, {
+            throwOnError: false,
+            displayMode: true,
+          });
         } else if (token.mathLevel === "inline") {
-          return (
-            '<span class="math">' +
-            katex.renderToString(token.text, {
-              throwOnError: false,
-              displayMode: false,
-            }) +
-            "</span>"
-          );
+          return katex.renderToString(token.text, {
+            throwOnError: false,
+            displayMode: false,
+          });
         }
       },
     };

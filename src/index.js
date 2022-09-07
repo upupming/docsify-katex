@@ -14,7 +14,7 @@
       name: "math",
       level: "inline",
       start(src) {
-        let index = src.match(/\$/).index;
+        let index = src.match(/\$/)?.index;
         return index;
       },
       tokenizer(src, tokens) {

@@ -1,7 +1,7 @@
 # docsify-katex
 
 [![jsdelivr](https://data.jsdelivr.com/v1/package/npm/docsify-katex/badge)](https://www.jsdelivr.com/package/npm/docsify-katex)
-[![npm bundle size (minified)](https://img.shields.io/github/size/upupming/docsify-katex/dist/docsify-katex.js.svg)](<[https://www.npmjs.com/package/docsify-katex](https://github.com/upupming/docsify-katex/tree/master/dist)>)
+[![npm bundle size (minified)](https://img.shields.io/github/size/upupming/docsify-katex/dist/docsify-katex.js.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
 [![npm](https://img.shields.io/npm/v/docsify-katex.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
 
 Add [KaTeX](https://github.com/KaTeX/KaTeX/) support to your docsify project with just two lines of code in `index.html`.
@@ -11,13 +11,17 @@ Add [KaTeX](https://github.com/KaTeX/KaTeX/) support to your docsify project wit
 Add `docsify-katex` CDN to your `index.html`:
 
 ```html
-<!-- CDN files for docsify-katex -->
-<script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
-<!-- or <script src="//cdn.jsdelivr.net/gh/upupming/docsify-katex@latest/dist/docsify-katex.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"
+></script>
 <link
   rel="stylesheet"
   href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
 />
+<script src="https://cdn.jsdelivr.net/npm/marked@3"></script>
+
+<!-- CDN files for docsify-katex -->
+<script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+<!-- or <script src="//cdn.jsdelivr.net/gh/upupming/docsify-katex@latest/dist/docsify-katex.js"></script> -->
 ```
 
 Note:
@@ -52,41 +56,4 @@ If you have an awesome project using `docsify-katex` and want to share it with o
 
 ## Known issues
 
-Making KaTeX work properly with docsify is a hard work, this repo is just a workaround. ~~The main difficulty is that we cannot know context of the whole markdown file like [yzhang-gh/markdown-it-katex](https://github.com/yzhang-gh/markdown-it-katex) does, so matching complicate <code>`</code>'s and <code>\$</code>'s is not possible. Now we have such known issues:~~
-
-~~1. Change <code>\\`</code> to:~~
-
-    ~~By doing this, your <code>`</code> will not be considered as a start or end of a code block.~~
-
-## new Install
-
-```html
-<head>
-  <!-- begin for docsify katex -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
-    integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X"
-    crossorigin="anonymous"
-  />
-  <script
-    defer
-    src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js"
-    integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz"
-    crossorigin="anonymous"
-  ></script>
-  <!-- the version of marked must be less than 4 -->
-  <script src="https://cdn.jsdelivr.net/npm/marked@3"></script>
-  <!-- end for docsify katex -->
-</head>
-<body>
-  <div id="app"></div>
-  <script src="//cdn.jsdelivr.net/npm/mermaid@8.0.0-rc.8/dist/mermaid.min.js"></script>
-  <script>
-    window.$docsify = {};
-  </script>
-  <!-- insert script before docsify.js-->
-  <script src="../src/index.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.js"></script>
-</body>
-```
+Making KaTeX work properly with docsify is a hard work, this repo is just a workaround. We used an extra `marked` instance (version 3.x) to do the syntax parsing.

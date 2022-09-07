@@ -1,6 +1,3 @@
-// import katex from "katex";
-// import marked from "marked";
-
 (function () {
   let oldMarkdown = window.$docsify.markdown;
   let newMarked = marked; // version above 2.1.0

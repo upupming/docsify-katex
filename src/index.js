@@ -1,100 +1,85 @@
-import 'katex/contrib/mhchem/mhchem';
-import katex from 'katex';
-
-let options = {
-  throwOnError: false,
-  displayMode: false
-};
-let blockOptions = {
-  throwOnError: false,
-  displayMode: true
-};
-
-const magicEscapedDollar = 'c194a9eb';
-const magicEscapedDollarRegex = /c194a9eb/g;
-const magicBacktickInCodeTag = 'c194a9ec';
-const magicBacktickInCodeTagRegex = /c194a9ec/g;
-const magicBacktickInDollars = 'c194a9ed';
-const magicBacktickInDollarsRegex = /c194a9ed/g;
-const magicEscapedBacktick = 'c194a9ee';
-const magicEscapedBacktickRegex = /c194a9ee/g;
-const magicDollarInBacktick = 'c194a9ef';
-const magicDollarInBacktickRegex = /c194a9ef/g;
-
-const preMathInlineOpen = 'c194a9eg<!-- begin-inline-katex';
-const preMathInlineClose = 'end-inline-katex-->';
-const preMathInlineRegex = /c194a9eg<!-- begin-inline-katex([\s\S]*?)end-inline-katex-->/g;
-
-
-const preMathBlockOpen = '<!-- begin-block-katex';
-const preMathBlockClose = 'end-block-katex-->';
-const preMathBlockRegex = /<!-- begin-block-katex([\s\S]*?)end-block-katex-->/g;
-
-const blockDollar = '!!blockDollar!!';
-const blockDollarRegex = /!!blockDollar!!/g;
-
 (function () {
-  function install(hook) {
-    hook.beforeEach(content => {
-      let mathPreserved = content
-        // Escape all <code>`</code>
-        .replace(/<code>(.*)<\/code>/g, function (a, b) {
-          return `<code>${b.replace(/`/g, magicBacktickInCodeTag)}</code>`;
-        })
-        // Escape all $`$
-        .replace(/\$`\$/g, magicBacktickInDollars)
-        // Escape all \`{
-        .replace(/\\`\{/g, magicEscapedBacktick)
-        // Escape all \$
-        .replace(/\\\$/g, magicEscapedDollar)
-        // Escape all & in `...`
-        .replace(/(`{1,})([\s\S]*?)\1/g, function (a) {
-          return a.replace(/\$/g, magicDollarInBacktick);
-        })
-        // Recover all <code>`</code>
-        .replace(magicBacktickInCodeTagRegex, '`');
-      mathPreserved = mathPreserved
-        // Recover all $`$
-        .replace(magicBacktickInDollarsRegex, '$ `$')
-        // Recover all \`{
-        .replace(magicEscapedBacktickRegex, '\\`{');
-      mathPreserved = mathPreserved
-        // Block
-        .replace(/(\$\$)([\s\S]*?)(\$\$)/g, function (a, b, c) {
-          let x = c.replace(/\$/g, blockDollar)
-          return preMathBlockOpen + x + preMathBlockClose;
-        })
-        // Inline, no \$
-        .replace(/(\$)([\s\S]*?)(\$)/g, function (a, b, c) {
-          return preMathInlineOpen + c.replace(magicEscapedDollarRegex, '\\$') + preMathInlineClose;
-        })
-        .replace(magicEscapedDollarRegex, '\\$');
-      return mathPreserved;
-    });
-    hook.afterEach(function (html, next) {
-      let mathRendered = html
-        .replace(
-          preMathInlineRegex,
-          function (m, code) {
-            let rendered = katex.renderToString(code, options);
-            return rendered;
+  let oldMarkdown = window.$docsify.markdown;
+  let newMarked = marked; // version above 2.1.0
+  function newMarkdown(originMarked, originRenderer) {
+    // in docsify.js: `window.marked = marked;`
+    // this will overwrite the marked
+    // here `let newMarked = marked;` will not right
+    function isFn(obj) {
+      return typeof obj === "function";
+    }
+    const mathExtension = {
+      name: "math",
+      level: "inline",
+      start(src) {
+        let index = src.match(/\$/)?.index;
+        return index;
+      },
+      tokenizer(src, tokens) {
+        const blockRule = /^\$\$((\\.|[^\$\\])+)\$\$/;
+        const inlineRule = /^\$((\\.|[^\$\\])+)\$/;
+        let match;
+        if ((match = blockRule.exec(src))) {
+          return {
+            type: "math",
+            raw: match[0],
+            text: match[1].trim(),
+            mathLevel: "block",
+          };
+        } else if ((match = inlineRule.exec(src))) {
+          return {
+            type: "math",
+            raw: match[0],
+            text: match[1].trim(),
+            mathLevel: "inline",
+          };
+        }
+      },
+      renderer(token) {
+        if (token.mathLevel === "block") {
+          return katex.renderToString(token.text, {
+            throwOnError: false,
+            displayMode: true,
+          });
+        } else if (token.mathLevel === "inline") {
+          return katex.renderToString(token.text, {
+            throwOnError: false,
+            displayMode: false,
+          });
+        }
+      },
+    };
+    const merge =
+      Object.assign ||
+      function (to) {
+        for (let i = 1; i < arguments.length; i++) {
+          const from = Object(arguments[i]);
+          for (const key in from) {
+            if (hasOwn.call(from, key)) {
+              to[key] = from[key];
+            }
           }
-        );
-      mathRendered = mathRendered
-        .replace(
-          preMathBlockRegex,
-          function (m, code) {
-            // Recover all $ in $$...$$
-            code = code.replace(blockDollarRegex, '$')
-            let rendered = katex.renderToString(code, blockOptions);
-            return rendered;
-          }
-        );
-      next(mathRendered
-        // Recover all & in `...`
-        .replace(magicDollarInBacktickRegex, '$'));
-    });
-  }
+        }
+        return to;
+      };
 
-  $docsify.plugins = [].concat(install, $docsify.plugins);
-}());
+    let opts = oldMarkdown || {};
+
+    if (isFn(oldMarkdown)) {
+      opts = originMarkdonw.apply(
+        this, // make it right: return this.origin.code(src);
+        originMarked,
+        originRenderer
+      ).defaults;
+    } else {
+      opts = merge(oldMarkdown, {
+        renderer: merge(originRenderer, oldMarkdown.renderer),
+      });
+    }
+    newMarked.setOptions(opts);
+    newMarked.use({ extensions: [mathExtension] });
+
+    return newMarked;
+  }
+  window.$docsify.markdown = newMarkdown;
+})();

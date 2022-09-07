@@ -3,10 +3,11 @@
 
 (function () {
   let oldMarkdown = window.$docsify.markdown;
-  let newMarked = marked;
-  let newM = JSON.stringify(newMarked);
+  let newMarked = marked; // version above 2.1.0
   function newMarkdown(originMarked, originRenderer) {
-    // let newMarked = marked; // in docsify.js: window.$marked = marked
+    // in docsify.js: `window.marked = marked;`
+    // this will overwrite the marked
+    // here `let newMarked = marked;` will not right
     function isFn(obj) {
       return typeof obj === "function";
     }
@@ -69,7 +70,7 @@
 
     if (isFn(oldMarkdown)) {
       opts = originMarkdonw.apply(
-        this, // this original
+        this, // make it right: return this.origin.code(src);
         originMarked,
         originRenderer
       ).defaults;

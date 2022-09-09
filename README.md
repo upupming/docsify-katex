@@ -11,12 +11,8 @@ Add [KaTeX](https://github.com/KaTeX/KaTeX/) support to your docsify project wit
 Add `docsify-katex` CDN to your `index.html`:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"
-></script>
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"
-/>
+<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/marked@3"></script>
 
 <!-- CDN files for docsify-katex -->

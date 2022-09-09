@@ -23,7 +23,6 @@ Add `docsify-katex` CDN to your `index.html`:
 Note:
 
 1. `gh/upupming/docsify-katex@latest/dist/docsify-katex.js` will always fetch the latest version of `docsify-katex` on GitHub, you can use it when you want to try the latest dev features.
-2. You don't need `katex.min.js`, because it is already included in `docsify-katex.js`.
 
 ## Demo projects
 

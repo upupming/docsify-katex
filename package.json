@@ -1,6 +1,6 @@
 {
   "name": "docsify-katex",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "KaTeX support for docsify",
   "main": "dist/docsify-katex.js",
   "scripts": {
@@ -25,14 +25,13 @@
     "url": "https://github.com/upupming/docsify-katex/issues"
   },
   "homepage": "https://github.com/upupming/docsify-katex#readme",
-  "dependencies": {
-    "katex": "^0.11.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "7.19.0",
     "@babel/preset-env": "7.19.0",
     "babel-loader": "8.2.5",
     "webpack": "5.74.0",
-    "webpack-cli": "^3.3.0"
+    "webpack-cli": "^3.3.0",
+    "katex": "^0.11.1"
   }
 }

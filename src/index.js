@@ -72,8 +72,8 @@
         originRenderer
       ).defaults;
     } else {
-      opts = merge(oldMarkdown, {
-        renderer: merge(originRenderer, oldMarkdown.renderer),
+      opts = merge(opts, {
+        renderer: merge(originRenderer, opts.renderer),
       });
     }
     newMarked.setOptions(opts);

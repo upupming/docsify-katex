@@ -13,21 +13,19 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/docsify@latest/lib/themes/vue.css"
     />
-    <!-- begin for docsify katex -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
+      href="//cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
       integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X"
       crossorigin="anonymous"
     />
     <script
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js"
+      src="//cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js"
       integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz"
       crossorigin="anonymous"
     ></script>
     <!-- the version of marked must above 2.1.0 -->
-    <script src="https://cdn.jsdelivr.net/npm/marked@4"></script>
-    <!-- end for docsify katex -->
+    <script src="//cdn.jsdelivr.net/npm/marked@4"></script>
   </head>
 
   <body>
@@ -39,8 +37,8 @@
       });
       let id = 0;
       window.$docsify = {
-        name: "docsify-katex",
-        repo: "https://github.com/upupming/docsify-katex",
+        name: 'docsify-katex',
+        repo: 'https://github.com/upupming/docsify-katex',
 
         loadSidebar: true,
         maxLevel: 4,
@@ -50,11 +48,11 @@
         markdown: {
           renderer: {
             code: function (code, lang) {
-              if (lang === "mermaid") {
+              if (lang === 'mermaid') {
                 return (
                   '<div class="mermaid">' +
-                  mermaid.render("mermaid-svg-" + id++, code) +
-                  "</div>"
+                  mermaid.render('mermaid-svg-' + id++, code) +
+                  '</div>'
                 );
               }
               return this.origin.code.apply(this, arguments);

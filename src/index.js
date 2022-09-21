@@ -1,6 +1,6 @@
 (function () {
   let oldMarkdown = window.$docsify.markdown;
-  let newMarked = marked; // version above 2.1.0
+  let newMarked = marked.parse; // version above 2.1.0
   function newMarkdown(originMarked, originRenderer) {
     // in docsify.js: `window.marked = marked;`
     // this will overwrite the marked

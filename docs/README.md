@@ -4,11 +4,11 @@
 [![npm bundle size (minified)](https://img.shields.io/github/size/upupming/docsify-katex/dist/docsify-katex.js.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
 [![npm](https://img.shields.io/npm/v/docsify-katex.svg?style=flat-square)](https://www.npmjs.com/package/docsify-katex)
 
-Add [KaTeX](https://github.com/KaTeX/KaTeX/) support to your docsify project with just two lines of code in `index.html`.
+Add [KaTeX](https://github.com/KaTeX/KaTeX/) support to your docsify project.
 
 ## Usage
 
-Add `docsify-katex` CDN to your `index.html`:
+Add `docsify-katex` JS and CSS scripts to your `index.html`:
 
 ```html
 <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
